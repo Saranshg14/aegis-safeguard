@@ -1,0 +1,106 @@
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.page-subtitle {
+    color: #888;
+    margin: 0.25rem 0 0 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: calc(100vh - 250px);
+}
+
+.map-section,
+.camera-feed-section {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.camera-feed-section {
+    gap: 1rem;
+}
+
+.incident-panel {
+    flex: 1;
+    overflow-y: auto;
+    background: #111;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.incident-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.incident-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #222;
+}
+
+.incident-item:last-child {
+    border-bottom: none;
+}
+
+.time {
+    color: #666;
+    font-size: 0.85rem;
+    width: 80px;
+}
+
+.incident-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.desc {
+    color: #eee;
+    font-weight: 500;
+}
+
+.sub-desc {
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge.warning {
+    background: rgba(255, 150, 50, 0.2);
+    color: #ff9632;
+}

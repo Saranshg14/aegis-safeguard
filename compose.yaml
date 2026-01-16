@@ -1,0 +1,64 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://user:password@db:5432/aegis
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./backend:/app
+
+  dashboard:
+    build:
+      context: ./dashboard
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./dashboard:/app
+
+  ppe_monitor:
+    build:
+      context: ./ppe_monitor
+    environment:
+      - BACKEND_URL=http://backend:8000/api/v1
+      - HEADLESS=true
+    volumes:
+      - ./ppe_monitor:/app
+    depends_on:
+      - backend
+    ports:
+      - "5000:5000"
+    command: python main.py --source site_3.mp4
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=aegis
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:

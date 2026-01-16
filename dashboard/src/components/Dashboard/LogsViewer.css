@@ -1,0 +1,112 @@
+.logs-viewer {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+    color: #fff;
+    border: 1px solid #333;
+    overflow-y: auto;
+}
+
+.logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.logs-header h2 {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+}
+
+.logs-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.pagination button {
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.logs-table-container {
+    overflow-x: auto;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.logs-table th {
+    text-align: left;
+    padding: 12px;
+    background: #252525;
+    color: #aaa;
+    font-weight: 500;
+}
+
+.logs-table td {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+.logs-table tr:hover {
+    background: #222;
+}
+
+.text-center {
+    text-align: center;
+    padding: 24px;
+    color: #888;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge.danger {
+    background: rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+}
+
+.badge.neutral {
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+}
+
+.btn-secondary {
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #444;
+}
