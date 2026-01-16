@@ -73,8 +73,12 @@ def get_stats() -> Any:
     else:
         compliance_val = 100
         
+    # Total Detections (Last 5 Minutes)
+    five_min_detections = len([e for e in EVENTS_STORE if (now - e.timestamp).total_seconds() < 300])
+
     return {
         "active_workers": active_workers, 
         "active_alerts": active_alerts,
-        "compliance_score": f"{int(compliance_val)}%"
+        "compliance_score": f"{int(compliance_val)}%",
+        "total_detections": five_min_detections
     }

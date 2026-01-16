@@ -1,46 +1,57 @@
-# Aegis SafeGuard - AI Industrial Safety Platform 🛡️
+# Aegis SafeGuard v2.4 - AI Industrial Safety Platform 🛡️
 
-Aegis SafeGuard is a real-time computer vision system designed to monitor industrial sites for PPE (Personal Protective Equipment) compliance. It detects workers, checks for helmets and vests, and logs violations instantly to a central dashboard.
+Aegis SafeGuard is an enterprise-grade, real-time computer vision system designed to monitor industrial sites for PPE (Personal Protective Equipment) compliance. It combines state-of-the-art AI detection with a professional command center dashboard to ensure worker safety.
 
-![Status](https://img.shields.io/badge/Status-Active-success)
+![Status](https://img.shields.io/badge/Status-Active_RC1-success)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Python](https://img.shields.io/badge/Python-3.11-yellow)
 ![React](https://img.shields.io/badge/React-18-cyan)
 
-## 🚀 Features
+## 🚀 Key Features
 
-*   **Real-time AI Detection**: Uses YOLOv8 to detect Persons and PPE (Helmets, Vests).
-*   **Live Video Feed**: Low-latency streaming to the dashboard.
-*   **Multi-Camera Support**: Switch between different video feeds dynamically.
-*   **Granular Alerts**: Specific warnings for "Missing Helmet" vs "Missing Vest".
-*   **Incident Logging**: Persistent history of violations with timestamps and Person IDs.
-*   **GPU Acceleration**: Fully optimized for NVIDIA GPUs (RTX Series).
+*   **Live Operations Center**: A 4-camera grid view monitoring multiple zones simultaneously ("Entrance Gate", "Assembly Line", "Loading Dock", "Storage Aisle").
+*   **Hybrid AI Engine**: 
+    *   **Live AI**: Real-time server-side processing for active feeds (e.g., Webcam/RTSP).
+    *   **Simulated Overlays**: Client-side AI simulation for static video feeds to demonstrate scale.
+*   **Real-time Analytics**:
+    *   **Compliance Reports**: Live charts showing violation trends and distribution (Helmet vs Vest).
+    *   **Audit Logs**: Searchable history of every safety incident with timestamps.
+*   **Enterprise UX**:
+    *   **Dark Mode**: Professional, low-strain interface for 24/7 monitoring centers.
+    *   **Digital Twin Map**: Integrated floor map showing worker positions in real-time.
+*   **Configuration**: Persistent settings for detection thresholds and notification alerts (Email/Slack).
 
 ## 🛠️ Quick Start
 
 ### Prerequisites
 *   Docker & Docker Compose
-*   NVIDIA GPU (Recommended) with Container Toolkit
+*   Webcam (Optional, for live demo)
 
 ### Installation
 1.  Clone the repository.
-2.  Place your video files in the `ppe_monitor` directory (optional).
-3.  Run the stack:
+2.  Start the full stack:
     ```bash
     docker compose up --build -d
     ```
 
 ### Accessing the System
-*   **Dashboard**: [http://localhost:3000](http://localhost:3000)
-*   **Backend API**: [http://localhost:8000/docs](http://localhost:8000/docs)
-*   **Monitor API**: [http://localhost:5000](http://localhost:5000)
+*   **Dashboard**: [http://localhost:3000](http://localhost:3000) - The main Command Center.
+*   **Backend API**: [http://localhost:8000/docs](http://localhost:8000/docs) - FASTAPI Swagger UI.
+*   **Monitor Service**: `http://localhost:5000` - AI Video Streamer.
 
 ## 📂 Project Structure
 
-*   `ppe_monitor/`: Computer Vision service (Python/YOLO + Flask).
-*   `backend/`: Main API and Database logic (FastAPI + PostgreSQL).
-*   `dashboard/`: Frontend User Interface (React + Vite).
-*   `compose.yaml`: Docker orchestration file.
+*   `ppe_monitor/`: Computer Vision service (YOLOv8 + Flask). Handles video processing.
+*   `backend/`: Central API (FastAPI) managing events, stats, and data persistence.
+*   `dashboard/`: Modern React/Vite frontend with Recharts and custom UI components.
+*   `compose.yaml`: Orchestrates the microservices (Backend, Dashboard, Monitor, DB, Redis).
 
-## 🤝 Contribution
-This project was built for the IIT Hackathon.
+## 🎮 Usage Guide
+
+1.  **Live Monitoring**: Go to **Live Operations**. Use the dropdown on the first camera to switch between "Site Videos" or "Webcam (Local)".
+2.  **Check Reports**: Visit **Compliance Reports** to see the "Total Detections" (last 5m) and violation analysis.
+3.  **Review Incidents**: Check **Audit Logs** for a tabular view of all safety events.
+4.  **Configure**: Use **Configuration** to adjust sensitivity or toggle logging.
+
+---
+*Built for the IIT Hackathon 2025.*

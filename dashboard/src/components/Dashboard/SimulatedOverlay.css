@@ -1,0 +1,65 @@
+.ai-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sim-box {
+    position: absolute;
+    border: 2px solid;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.sim-box.safe {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.sim-box.danger {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.sim-label {
+    position: absolute;
+    top: -20px;
+    left: -2px;
+    background: inherit;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.sim-box.safe .sim-label {
+    background: #10b981;
+}
+
+.sim-box.danger .sim-label {
+    background: #ef4444;
+}
+
+/* Animation loop for "alive" feel */
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(5px, 5px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.sim-box {
+    animation: float 3s infinite ease-in-out;
+}
